@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Signup{% endblock %}
+
+{% block body %}
+    <main id="main">
+
+        <!-- ======= Breadcrumbs Section ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>Sign up</h2>
+                    <ol>
+                        <li><a href="/">Home</a></li>
+                        <li>Sign up</li>
+                    </ol>
+                </div>
+
+            </div>
+        </section><!-- End Breadcrumbs Section
+
+        {% include 'fragment/flashes.html.twig' %}
+
+        <!-- ======= Signup Section ======= -->
+        <section id="signup" class="inner-page">
+            <div class="container">
+
+                <div class="section-title" data-aos="fade-up">
+                    <h2>Sign up</h2>
+                </div>
+
+                <div class="p-5 rounded bg-light" style="max-width: 640px;margin:auto" data-aos="fade-up">
+                    <h1 class="h2 mb-3 text-center">Create your Sea Cloud account</h1>
+                    <p class="lead border-bottom pb-3 mb-3 text-center">
+                        Create your account and start working with your servers.
+                    </p>
+
+                    {{ form_start(form) }}
+
+                        <div class="mb-3">
+                            {{ form_label(form.email) }}
+                            {{ form_widget(form.email) }}
+                            {#<label for="signup-email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="signup-email" placeholder="name@example.com">#}
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col">
+                                {{ form_label(form.plainPassword.first) }}
+                                {{ form_widget(form.plainPassword.first) }}
+                                {#<label for="signup-password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="signup-password" placeholder="" value="" required="">#}
+                                <div class="invalid-feedback">
+                                    Please enter your password.
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                {{ form_label(form.plainPassword.second) }}
+                                {{ form_widget(form.plainPassword.second) }}
+                                {#<label for="signup-confirmation" class="form-label">Confirmation</label>
+                                <input type="password" class="form-control" id="signup-confirmation" placeholder="" value="" required="">#}
+                                <div class="invalid-feedback">
+                                    Please enter your password confirmation.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">Sign up</button>
+                        </div>
+
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </section><!-- End Signup Section -->
+
+    </main><!-- End #main -->
+{% endblock %}

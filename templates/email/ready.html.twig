@@ -1,0 +1,26 @@
+{% extends 'email/base.html.twig' %}
+
+{% block subject %}
+    Server ready
+{% endblock %}
+
+{% block body %}
+    <p>
+        We are please to ann
+        We are pleased to inform you that your server
+        <strong>{{ server.name }}</strong> is ready !
+    </p>
+    <p>
+        You can now sign in to your serveur through SSH :<br>
+        <code>ssh root@{{ server.ip }}</code><br>
+        Password : <strong>ItWoNtWoRk</strong>
+    </p>
+    <p>
+        Find all details about your servers in your
+        <a href="{{ path('account_dashboard') }}">customer area</a>.
+    </p>
+    <p>
+        Best regards,<br>
+        The SeaCloud team
+    </p>
+{% endblock %}

@@ -75,6 +75,74 @@ développeurs chargés de la mise en place de la plateforme de déploiement des 
      (_STATE_PENDING_). Une fois re-déployé, la plate forme de déploiement appellera de nouveau l'url 
      ```GET /api/[server-id]/ready```.
 
+### Docker
+
+L'application peut-être lancé localement ou déployée sur un serveur grâce à Docker.
+
+#### Prérequis:
+
+* [Docker](https://docs.docker.com/get-docker/)
+* [Docker compose](https://docs.docker.com/compose/install/)
+
+#### Commandes
+
+1. Démarrer l'application :
+    
+    Cette commande télécharge les images, construit puis démarre les conteneurs. 
+
+         docker-compose up -d
+
+2. Stopper l'application :
+   
+   Cette commande arrête les conteneurs, puis les détruit.
+
+         docker-compose down
+
+3. Afficher la liste des conteneurs :
+
+         docker ps -a
+
+4. Executer une commande dans un conteneur :
+
+         docker exec -it [container] [command]
+         
+         # Se connecter au conteneur NGINX
+         docker exec -it sf-seacloud_nginx_1 sh
+         
+         # Se connecter au conteneur PHP
+         docker exec -it sf-seacloud_php_1 bash
+         
+         # Lancer une commande Symfony
+         docker exec -it sf-seacloud_php_1 php /var/www/bin/console list
+
+#### Installation
+
+La première fois que l'application est démarrée, il faut lancer une série de commandes pour initialiser le projet.
+
+```shell
+# Installer les dépendances
+docker exec -it sf-seacloud_php_1 composer install
+
+# Créer la base de données
+docker exec -it sf-seacloud_php_1 php bin/console doctrine:database:create
+
+# Appliquer les migrations
+docker exec -it sf-seacloud_php_1 php bin/console doctrine:migrations:migrate
+
+# Initialiser la base de données (données des datacenters et distributions)
+docker exec -it sf-seacloud_php_1 php bin/console app:init
+```
+
+#### Production
+
+Sur un serveur de production, on peut créer un fichier __.env.local__ 
+pour modifier les variables d'environnement :
+
+```dotenv
+APP_ENV=prod
+APP_SECRET=Uv78c56exP4c9sbIvU52i901dUv67xYa
+MAILER_DSN=...
+```
 
 ### Annexes
 

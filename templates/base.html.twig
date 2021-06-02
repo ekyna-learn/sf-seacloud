@@ -1,19 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
+        <meta content="" name="description">
+        <meta content="" name="keywords">
+
+        <title>SeaCloud - {% block title %}{% endblock %}</title>
+
+        {% block stylesheets %}
+        <!-- Favicons -->
+        <link href="/img/favicon.ico" rel="icon">
+        <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i"
+              rel="stylesheet">
+
+        <!-- Assets CSS Files -->
+        <link href="/assets/aos/aos.css" rel="stylesheet">
+        <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/assets/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="/assets/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="/assets/remixicon/remixicon.css" rel="stylesheet">
+        <link href="/assets/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+        <!-- Template Main CSS File -->
+        <link href="/css/style.css" rel="stylesheet">
         {% endblock %}
     </head>
     <body>
+        {% include 'fragment/header.html.twig' %}
+
         {% block body %}{% endblock %}
+
+        {% include 'fragment/footer.html.twig' %}
+
+        {% block javascripts %}
+        <!-- Vendor JS Files -->
+        <script src="/assets/aos/aos.js"></script>
+        <script src="/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/assets/swiper/swiper-bundle.min.js"></script>
+
+        <!-- Template Main JS File -->
+        <script src="/js/main.js"></script>
+        {% endblock %}
     </body>
 </html>

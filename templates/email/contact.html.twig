@@ -1,0 +1,11 @@
+{% extends 'email/base.html.twig' %}
+
+{% block subject %}
+    Contact form message
+{% endblock %}
+
+{% block body %}
+    <p>From {{ name }} &lt;{{ email }}&gt;</p>
+    <p>Subject : {{ subject }}</p>
+    <p>{{ message|nl2br }}</p>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'account/layout.html.twig' %}
+
+{% set section = 'My profil' %}{# Utilisé dans account/layout.html.twig #}
+
+{% block title %}Account - Dashboard{% endblock %}
+
+{% block account %}
+    <h2 class="mb-5">My profil</h2>
+
+    {{ form_start(form) }}
+        <div class="mb-4">
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email) }}
+        </div>
+
+        <div class="row mb-4">
+            <div class="col">
+                {{ form_label(form.plainPassword.first) }}
+                {{ form_widget(form.plainPassword.first) }}
+                <div class="invalid-feedback">
+                    Please enter your password.
+                </div>
+            </div>
+
+            <div class="col">
+                {{ form_label(form.plainPassword.second) }}
+                {{ form_widget(form.plainPassword.second) }}
+                <div class="invalid-feedback">
+                    Please enter your password confirmation.
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    {{ form_end(form) }}
+{% endblock %}

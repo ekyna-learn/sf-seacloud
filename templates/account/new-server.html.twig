@@ -1,0 +1,39 @@
+{% extends 'account/layout.html.twig' %}
+
+{% set section = 'New server' %}{# Utilisé dans account/layout.html.twig #}
+
+{% block title %}Account - Dashboard{% endblock %}
+
+{% block account %}
+    <h2 class="mb-5">Create your new server</h2>
+
+    {#{{ form(form) }}#}
+
+    {{ form_start(form) }}
+
+        {{ form_row(form.name) }}
+        {{ form_row(form.location) }}
+        {{ form_row(form.distribution) }}
+
+        <div class="mb-4 slider">
+            <span class="badge badge bg-primary float-end"><span>1</span> Intel CPU</span>
+            {{ form_label(form.cpu) }}
+            {{ form_widget(form.cpu, {'attr': {'class': 'form-range'}}) }}
+        </div>
+
+        <div class="mb-4 slider">
+            <span class="badge badge bg-primary float-end"><span>1</span> GB RAM</span>
+            {{ form_label(form.ram) }}
+            {{ form_widget(form.ram, {'attr': {'class': 'form-range'}}) }}
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/create.js"></script>
+{% endblock %}
